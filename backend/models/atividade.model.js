@@ -20,15 +20,15 @@ export const Atividade = sequelize.define(
             allowNull: false
         },
         distancia_percorrida: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
         duracao_atividade: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.FLOAT,
             allowNull: false
         },
         quantidade_calorias: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.FLOAT,
             allowNull: false
         }
     },
@@ -38,8 +38,8 @@ export const Atividade = sequelize.define(
     }
 );
 
-Usuario.hasMany(Atividade, {foreignKey: usuario_id});
-Atividade.belongsTo(Usuario, {foreignKey: usuario_id});
+Usuario.hasMany(Atividade, {foreignKey: 'usuario_id'});
+Atividade.belongsTo(Usuario, {foreignKey: 'usuario_id'});
 
 export default Atividade;
 
