@@ -1,6 +1,5 @@
 import Usuario from '../models/usuario.model.js';
 import { Op } from 'sequelize';
-//id,nome,email,nome_usuario,imagem,senha,createdAt,updatedAt
 
 export async function cadastrar(req, res) {
     try {
