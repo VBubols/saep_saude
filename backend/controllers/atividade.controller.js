@@ -1,5 +1,8 @@
 import Atividade from '../models/atividade.model.js'
 import Usuario from '../models/usuario.model.js';
+import Curtida from '../models/curtida.model.js';
+import Comentario from '../models/comentario.model.js';
+
 
 export async function criar(req, res) {
     try {
@@ -52,8 +55,22 @@ export async function listar(req, res) {
         const atividades = [];
 
         for (const atividade of rows) {
+            const qtd_curtidas = await Curtida.count({ where: { atividade_id: atividade.id }});
+            const qtd_comentarios = await Comentario.count({ where: { atividade_id: atividade.id }});
+
+            let curtido_por_mim = false;
+            if (req.usuario) {
+                const minhaCurtida = await Curtida.findOne({
+                  where: { atividade_id: atividade.id, usuario_id: req.usuario.id }
+                });
+                curtido_por_mim = !!minhaCurtida;
+            };
+
             atividades.push({
-                ...atividade.toJSON()
+                ...atividade.toJSON(),
+                qtd_curtidas,
+                qtd_comentarios,
+                curtido_por_mim
             })
         };
 
