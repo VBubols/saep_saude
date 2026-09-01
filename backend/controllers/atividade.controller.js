@@ -51,7 +51,7 @@ export async function listar(req, res) {
 
         const atividades = [];
 
-        for (atividade of rows) {
+        for (const atividade of rows) {
             atividades.push({
                 ...atividade.toJSON()
             })
