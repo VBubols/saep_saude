@@ -8,17 +8,12 @@ export const Comentario = sequelize.define(
     {
         id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true},
         usuario_id : { type: DataTypes.UUID, allowNull: false },
-        atividade_id : { type: DataTypes.UUID, allowNull: false }
+        atividade_id : { type: DataTypes.UUID, allowNull: false },
+        texto : { type: DataTypes.STRING, allowNull: false }
     },
     {
         tableName: 'comentario',
         timestamps: true,
-        indexes: [
-            {
-                unique: true,
-                fields: ['usuario_id', 'atividade_id']
-            }
-        ]
     }
 );
 

@@ -8,7 +8,7 @@ export async function perfil(req, res) {
             return res.status(404).json({mensagem: 'Usuário não encontrado'});
         }
 
-        const qtd_atividade = await Atividade.count({where: { usuario_id: req.usuario_id }});
+        const qtd_atividade = await Atividade.count({where: { usuario_id: req.usuario.id }});
         const qtd_calorias = await Atividade.sum('quantidade_calorias', { where: { usuario_id: req.usuario.id } }) || 0;
 
         return res.status(200).json({ ...usuario.toJSON(), qtd_atividade, qtd_calorias });
