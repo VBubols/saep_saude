@@ -1,7 +1,7 @@
 import Usuario from '../models/usuario.model.js';
 import Atividade from '../models/atividade.model.js'
 
-export async function perfil(req, res) {
+export async function mostrarPerfil(req, res) {
     try {
         const usuario = await Usuario.findByPk(req.usuario.id, { attributes: { exclude: ['senha'] } });
         if(!usuario) {
