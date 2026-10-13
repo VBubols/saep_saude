@@ -25,12 +25,17 @@ export const Usuario = sequelize.define(
             unique: true
         },
         imagem: {
-            type: DataTypes.BLOB,
+            type: DataTypes.STRING,
             allowNull: true
         },
         senha: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        tipo_usuario: {
+            type: DataTypes.ENUM('empresa', 'funcionario', 'cliente'),
+            allowNull: false,
+            defaultValue: 'cliente'
         }
     },
     {

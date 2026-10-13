@@ -1,0 +1,554 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    color: #333333;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+input,
+select {
+    padding: 8px 10px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #FFFFFF;
+    color: #333333;
+}
+
+label {
+    font-size: 14px;
+}
+
+.input-erro {
+    border: 2px solid #FF0000;
+}
+
+.mensagem-erro {
+    color: #FF0000;
+    font-size: 13px;
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+.perfil {
+    background: #333333;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.perfil-topo {
+    padding: 32px 16px 24px;
+    text-align: center;
+}
+
+.perfil-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.perfil-nome {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.perfil-numeros {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+}
+
+.perfil-numeros strong {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.perfil-numeros span {
+    font-size: 12px;
+}
+
+.sem-foto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #483DAD;
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.botao-atividade {
+    background: transparent;
+    color: #FFFFFF;
+    border: none;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 12px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.botao-atividade img {
+    width: 22px;
+    height: 22px;
+}
+
+.botao-atividade.ativo {
+    background: #483DAD;
+    color: #FFFFFF;
+}
+
+.rodape {
+    margin-top: auto;
+    background: #333333;
+    color: #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    padding: 16px;
+    text-align: center;
+}
+
+.rodape-icones {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 12px 0;
+}
+
+.rodape-icones img {
+    width: 24px;
+    height: 24px;
+}
+
+.rodape small {
+    font-size: 12px;
+}
+
+.principal {
+    width: 100%;
+    max-width: 960px;
+    justify-self: center;
+    padding: 16px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botao-login,
+.botao-logout {
+    padding: 8px 28px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.botao-login {
+    background: #FFFFFF;
+    color: #333333;
+}
+
+.botao-logout {
+    background: #333333;
+    color: #FFFFFF;
+}
+
+.filtros {
+    background: #333333;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    padding: 6px;
+}
+
+.filtros button {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    padding: 4px 14px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.filtros button.ativo {
+    background: #483DAD;
+}
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vazio {
+    text-align: center;
+    padding: 24px;
+}
+
+.card {
+    border: 1px solid #333333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card-corpo {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+    padding: 10px;
+}
+
+.card-foto {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+}
+
+.card-topo {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    gap: 8px;
+}
+
+.card-usuario {
+    font-size: 18px;
+}
+
+.card-titulo {
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.card-data {
+    font-size: 12px;
+    text-align: right;
+}
+
+.card-rodape {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+    margin-top: 18px;
+}
+
+.metrica strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.metrica span {
+    font-size: 12px;
+}
+
+.interacoes {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+}
+
+.interacoes button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 18px;
+    color: #333333;
+}
+
+.interacoes img {
+    width: 24px;
+    height: 24px;
+}
+
+.comentarios {
+    background: #333333;
+    padding: 10px;
+}
+
+.lista-comentarios {
+    list-style: none;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.lista-comentarios li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.comentario-foto {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.form-comentario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-comentario input {
+    flex: 1;
+    border: 2px solid #FFFFFF;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.form-comentario input.input-erro {
+    border-color: #FF0000;
+}
+
+.form-comentario button {
+    background: none;
+    border: none;
+}
+
+.form-comentario img {
+    width: 28px;
+    height: 28px;
+}
+
+.comentarios .mensagem-erro {
+    margin-top: 6px;
+}
+
+.paginacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.paginacao button {
+    background: #FFFFFF;
+    color: #333333;
+    border: 1px solid #333333;
+    padding: 4px 10px;
+    font-size: 13px;
+}
+
+.paginacao button.ativa {
+    background: #483DAD;
+    border-color: #483DAD;
+    color: #FFFFFF;
+}
+
+.paginacao select {
+    margin-left: 12px;
+    padding: 4px 6px;
+    font-size: 13px;
+}
+
+.fundo-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(51, 51, 51, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 340px;
+    border: 1px solid #333333;
+    border-radius: 6px;
+}
+
+.modal-topo {
+    position: relative;
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #333333;
+}
+
+.modal-topo h2 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.botao-fechar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+}
+
+.botao-fechar img {
+    width: 20px;
+    height: 20px;
+}
+
+.modal-corpo {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-corpo input {
+    margin-bottom: 8px;
+}
+
+.modal-botoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.botao-escuro,
+.botao-contorno {
+    padding: 6px 16px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.botao-escuro {
+    background: #333333;
+    color: #FFFFFF;
+}
+
+.botao-contorno {
+    background: none;
+    color: #333333;
+}
+
+.form-atividade {
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 12px 16px 16px;
+}
+
+.form-atividade h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.form-grade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-atividade .botao-escuro {
+    display: block;
+    margin: 14px 0 0 auto;
+}
+
+.titulo-secao {
+    text-align: center;
+    font-size: 20px;
+}
+
+@media (max-width: 760px) {
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .perfil {
+        position: static;
+        height: auto;
+    }
+
+    .principal {
+        padding: 16px;
+    }
+
+    .filtros {
+        gap: 8px;
+    }
+
+    .card-corpo {
+        grid-template-columns: 64px 1fr;
+    }
+
+    .card-foto {
+        width: 64px;
+        height: 64px;
+    }
+
+    .card-topo {
+        grid-template-columns: 1fr auto;
+    }
+
+    .card-data {
+        grid-column: 1 / -1;
+        text-align: left;
+    }
+
+    .card-rodape {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .form-grade {
+        grid-template-columns: 1fr;
+    }
+}

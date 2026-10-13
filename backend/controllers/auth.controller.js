@@ -3,7 +3,7 @@ import { Op } from 'sequelize';
 
 export async function cadastrar(req, res) {
     try {
-        const {nome, email, nome_usuario, senha} = req.body;
+        const { nome, email, nome_usuario, senha } = req.body;
 
         if (!nome || !email || !nome_usuario || !senha) {
             return res.status(400).json({ mensagem: 'Todos os campos são obrigatórios' });
@@ -15,41 +15,49 @@ export async function cadastrar(req, res) {
             }
         });
 
-        if(existing) {
+        if (existing) {
             const campo = existing.email === email ? 'Email' : 'Nome de usuário';
-            return res.status(409).json({mensagem: `${campo} já cadastrado`})
+            return res.status(409).json({ mensagem: `${campo} já cadastrado` });
         };
 
-        const usuario = await Usuario.create({nome, email, nome_usuario, senha});
+        const usuario = await Usuario.create({ nome, email, nome_usuario, senha });
         const usuario_response = usuario.toJSON();
         delete usuario_response.senha;
 
-        return res.status(201).json(usuario_response)
-
+        return res.status(201).json(usuario_response);
     } catch (error) {
-        return res.status(500).json({mensagem: `ERRO: ${error}`})
+        console.error(error);
+        return res.status(500).json({ mensagem: 'Erro interno do servidor' });
     };
 };
 
 export async function login(req, res) {
     try {
-        const {email, senha} = req.body;
+        const { email, senha } = req.body;
 
         if (!email || !senha) {
-            return res.status(401).json({ mensagem: 'Email ou senha obrigatório' });
-        }
+            const campos = [];
+            if (!email) campos.push('email');
+            if (!senha) campos.push('senha');
+            return res.status(400).json({ mensagem: 'email ou senha obrigatório', campos });
+        };
 
-        const usuario = await Usuario.findOne({where: {email}})
+        const usuario = await Usuario.findOne({ where: { email } });
 
-        if(!usuario || usuario.senha !== senha) {
-            return res.status(401).json({mensagem: 'Credenciais inválidas!'})
+        if (!usuario) {
+            return res.status(401).json({ mensagem: 'email ou senha incorreta', campos: ['email'] });
+        };
+
+        if (usuario.senha !== senha) {
+            return res.status(401).json({ mensagem: 'email ou senha incorreta', campos: ['senha'] });
         };
 
         const usuario_response = usuario.toJSON();
         delete usuario_response.senha;
-    
+
         return res.status(200).json({ mensagem: 'Login concluído!', usuario: usuario_response });
     } catch (error) {
-        return res.status(500).json({mensagem: `ERRO: ${error}`});
+        console.error(error);
+        return res.status(500).json({ mensagem: 'Erro interno do servidor' });
     };
 };
